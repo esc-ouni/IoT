@@ -76,7 +76,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "HsaktiwyS" do |server|
     server.vm.hostname = "HsaktiwyS"
     server.vm.network "private_network", ip: "192.168.56.110"
-    server.vm.provision "shell", path: "Server_setup.bash"
+    server.vm.provision "shell", path: ".scipts/Server_setup.bash"
     # server.vm.provision "shell", inline: <<-SHELL
     #   sudo apk update
     #   sudo apk vim htop curl
@@ -94,8 +94,8 @@ Vagrant.configure("2") do |config|
   config.vm.define "HsaktiwySW" do |worker|
     worker.vm.hostname = "HsaktiwySW"
     worker.vm.network "private_network", ip: "192.168.56.111"
-    server.vm.provision "shell", path: "ServerWorker_setup.bash"
-    # server.vm.provision "shell", inline: <<-SHELL
+    worker.vm.provision "shell", path: ".scipts/ServerWorker_setup.bash"
+    # worker.vm.provision "shell", inline: <<-SHELL
     #   sudo apk update
     #   sudo apk vim htop curl
     #   curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_START=true sh -s - server --disable-agent
